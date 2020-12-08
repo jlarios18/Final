@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Expeditions.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Expeditions
 {
@@ -23,6 +25,10 @@ namespace Expeditions
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<ExpeditionDbContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration["ConnectionStrings:Expeditions"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
