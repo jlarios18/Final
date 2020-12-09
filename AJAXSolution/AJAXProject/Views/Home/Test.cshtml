@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Ajax Calculator</h2>
+
+<h1>Number 1: <input type="text" id="nr1" alt="Number 1" /></h1>
+<h1>Number 2: <input type="text" id="nr2" alt="Number 2" /></h1>
+
+<input type="button" id="calculate" value="Do the math!" class="btn btn-default" />
+
+<div id="results">
+
+</div>
+
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+@*<script>
+    //This is the client side implementation where we call the 'Math' actionresult on HomeController
+    $(document).ready(function () {
+        $("#calculate").click(function () {
+            var nr1 = $("#nr1").val();
+            var nr2 = $("#nr2").val();
+            $.ajax({
+                url: '@Url.Action("Math", "Home")?nr1=' + nr1 + '&nr2' + nr2,
+                success: function (data) {
+                    if (data.status == "ok")
+                    {
+                        $("#results").html(data.result); //data.result a dynamic object too
+                    }
+                }
+            });
+        });
+    });
+
+</script>*@
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/main.js"></script>
+}
