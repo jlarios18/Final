@@ -1,0 +1,116 @@
+@model IEnumerable<HW8Project.Models.Assignment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+
+<div class="text-center">
+    <h1 class="display-4"><strong>Current List of Assignments</strong></h1>
+</div>
+
+<hr />
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Add a new assignment</h3>
+            <label>
+                Want to add a new assignment to your <br /> current list? Click the button down below <br /> to add one.
+            </label>
+        </div>
+        <div class="col-sm-4">
+            <h3>Mark an assignment <br /> as complete</h3>
+            <label>
+                Want to mark an assignment as complete? Simply click on a checkbox within the "Completion" column
+                to mark an <br /> assignment as complete. Once you finish selecting the assignment that has been completed, click the
+                "Mark Assignment as Complete" button to update the current <br /> list of assignments.
+            </label>
+        </div>
+        <div class="col-sm-4">
+            <h3>View past assignments</h3>
+            <label>
+                Want to view all of your old assignments? <br /> Click below to see all of the homework <br />assignments you marked as complete.
+            </label>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<form asp-action="Index">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                @Html.ActionLink("Add New Assignment", "Add", "Course", null, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-sm-4">
+                <input type="submit" value="Mark Assignment as Complete" class="btn btn-primary" />
+            </div>
+            <div class="col-sm-4">
+                @Html.ActionLink("View Past Assignments", "Older", "Assignment", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Due)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Completion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+            </tr>
+        </thead>
+        <tbody id="ajaxtable">
+            @*@{ var displayTags = (Tag)ViewData["personDisplay"];}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Due)
+                    </td>
+                    <td>
+                        <a asp-action="CourseAssignments" asp-route-id="@item.Course.Id">@Html.DisplayFor(modelItem => item.Course.Name)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <input type="checkbox" name="id" value="@item.Id" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                </tr>
+            }*@
+        </tbody>
+    </table>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/js/site.js"></script>
+}

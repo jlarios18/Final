@@ -1,0 +1,36 @@
+﻿@model HW8Project.Models.Course
+
+
+@{
+    ViewData["Title"] = "Add Course";
+}
+
+<br />
+
+<h1>First...</h1>
+<h3>add a single course, or a list of courses</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Enter a course name:</label>
+                <input name="course" class="form-control" placeholder="CS 460, CS 360, WR 300"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create Course" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "Assignment", null, new { @class = "btn btn-secondary" })
+            </div>
+            <div>
+                @Html.ActionLink("Skip and use existing courses", "Create", "Assignment")
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
